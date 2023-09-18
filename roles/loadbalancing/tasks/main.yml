@@ -1,0 +1,12 @@
+---
+# tasks file for loadbalancing
+   - name: install ngnix on control node 
+     yum:
+      name: nginx
+      state: installed
+        
+   - name: configure nginx
+     template:
+       src: templates/nginx_template.j2
+       dest: /etc/nginx/conf.d/load-balancer.conf
+     notify: restart nginx

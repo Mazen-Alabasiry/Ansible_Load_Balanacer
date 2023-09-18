@@ -1,0 +1,17 @@
+---
+
+# tasks file for roles/managecontent
+- name: Deploy index.j2 to index.html
+  template:
+   src: templates/index.j2
+   dest: "{{ item.dir }}/index.html"
+   mode: 0444
+  loop: "{{ sites }}"
+
+- name: Deplpy info.j2 to info.php
+  template:
+   src: templates/info.j2
+   dest: "{{ item.dir }}/info.php"
+   mode: 0444
+  loop: "{{ sites }}"
+

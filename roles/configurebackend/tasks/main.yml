@@ -1,0 +1,28 @@
+---
+# tasks file for configurbackend
+
+- name: Create site user
+  user:
+   name: "{{ item.user }}"
+   home: "{{ item.dir }}"
+   comment: "{{ item.name }} admin user"
+   shell: /bin/bash
+   state: present
+  loop: "{{ sites }}"
+  ignore_errors: true
+  
+- name: Configure VHosts
+  template:
+   src: templates/vhosts.j2
+   dest: /etc/httpd/conf.d/{{ item.name}}.conf
+   mode: 0444
+  loop: "{{ sites }}"
+  notify: Restart httpd
+  ignore_errors: true
+  
+- name: Enable firewall for http service
+  firewalld:
+      service: http
+      immediate: true
+      permanent: true
+      state: enabled

@@ -1,0 +1,11 @@
+---
+- name: Install apache and php
+  yum:
+    name: 
+       - httpd
+#       - php
+#       - php-common
+#       - php-pecl-apcu
+#       - php-cli
+#       - php-mysqlnd
+    state: installed

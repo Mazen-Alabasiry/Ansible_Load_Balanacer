@@ -1,0 +1,10 @@
+---
+# vars file for roles/configurehttpd
+sites:
+ - name: mazen.com
+   dir: /var/www//html/mazen.com
+   user: mazen1
+
+ - name: abasiiry.com
+   user: abasiiry
+   dir:  /var/www/html/abasiiry.com

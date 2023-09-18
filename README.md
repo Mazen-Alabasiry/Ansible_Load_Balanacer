@@ -1,0 +1,2 @@
+- Install and configure Nginx web server as load balancer on control node (localhost) to balance traffic between to or more server as backend server which using Apache web server 
+- completely automated using Ansible.

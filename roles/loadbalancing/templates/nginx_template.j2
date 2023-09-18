@@ -1,0 +1,19 @@
+## configure load balancer -->  servers 1,2
+
+   upstream backend {
+    {% for server in nginx_loadbalance %}
+       server {{ server }};
+    {% endfor %}               
+
+    }
+
+  server {
+   listen 80;
+   server_name _;
+
+   location / { 
+      proxy_pass http://backend ;
+   }
+ }
+
+

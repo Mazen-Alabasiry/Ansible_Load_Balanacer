@@ -1,0 +1,18 @@
+---
+###Playbook uses 3 roles to create virtual hosting server for 3 websites
+- name: Deploy system
+  hosts: servers
+  become: true
+  gather_facts: false
+  roles:
+    - installpackages
+    - configurebackend
+    - configurecontent
+    
+- name: install & configure loadbalancer
+  hosts: myserver
+  remote_user: abasiiry
+  become: true
+  gather_facts: false
+  roles:
+    - loadbalancing

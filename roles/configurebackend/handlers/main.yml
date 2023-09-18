@@ -1,0 +1,6 @@
+---
+# handlers file for configurbackend
+- name: Restart httpd
+  service:
+   name: httpd
+   state: restarted

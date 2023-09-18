@@ -1,0 +1,9 @@
+<VirtualHost *:80>
+	ServerName {{ item.name }}
+        DocumentRoot {{ item.dir }}
+</VirtualHost>
+
+<Directory {{ item.dir }}>
+	AllowOverride All
+        Require all granted
+</Directory>
